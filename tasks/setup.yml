@@ -1,0 +1,12 @@
+---
+- name: "Create tautulli data directory"
+  ansible.builtin.file:
+    name: "{{ tautulli_docker_data_dir }}"
+    state: "directory"
+    mode: "0770"
+  when: "not tautulli_docker_use_volumes"
+
+- name: "Create tautulli Docker volume"
+  community.docker.docker_volume:
+    name: "{{ tautulli_docker_volume_name }}"
+  when: "tautulli_docker_use_volumes"

@@ -1,0 +1,12 @@
+---
+- name: "Create Docker network"
+  community.docker.docker_network:
+    name: "{{ tautulli_docker_network }}"
+    driver: "{{ tautulli_docker_network_driver }}"
+    enable_ipv6: "{{ tautulli_docker_network_enable_ipv6 }}"
+    internal: "{{ tautulli_docker_network_internal }}"
+    scope: "{{ tautulli_docker_network_scope }}"
+    ipam_config:
+      - subnet: "{{ tautulli_docker_network_subnet }}"
+        gateway: "{{ tautulli_docker_network_gateway }}"
+  when: "tautulli_docker_network_create"

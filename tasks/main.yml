@@ -1,2 +1,19 @@
 ---
-# tasks file for tautulli
+- name: "Run general setup"
+  ansible.builtin.import_tasks: "setup.yml"
+  tags:
+    - "tautulli"
+    - "tautulli:setup"
+
+- name: "Run network setup"
+  ansible.builtin.import_tasks: "network.yml"
+  tags:
+    - "tautulli"
+    - "tautulli:network"
+  when: "tautulli_docker_network_create"
+
+- name: "Create container"
+  ansible.builtin.import_tasks: "container.yml"
+  tags:
+    - "tautulli"
+    - "tautulli:docker"
