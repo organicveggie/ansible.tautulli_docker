@@ -73,6 +73,8 @@
     pull: true
     mounts: "{{ _tautulli_docker_mount_list }}"
     env:
+      "PGID": "{{ tautulli_docker_gid | default(omit) }}"
+      "PUID": "{{ tautulli_docker_uid | default(omit) }}"
       "TZ": "{{ tautulli_docker_timezone }}"
     network_mode: "{{ tautulli_docker_network }}"
     networks: "{{ _tautulli_docker_all_networks }}"

@@ -1,8 +1,13 @@
 ---
-- name: Converge
-  hosts: all
-  gather_facts: false
-  tasks:
-    - name: "Include organicveggie.tautulli"
-      ansible.builtin.include_role:
-        name: "organicveggie.tautulli"
+- name: "Run common setup plays"
+  import_playbook: "../resources/playbooks/setup.yml"
+
+- name: "Converge execution"
+  hosts: "all"
+  become: true
+
+  vars:
+    tautulli_docker_network_create: true
+
+  roles:
+    - "organicveggie.tautulli_docker"

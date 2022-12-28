@@ -1,10 +1,40 @@
 ---
-# This is an example playbook to execute Ansible tests.
-
-- name: Verify
-  hosts: all
+- name: "Verify"
+  hosts: "all"
   gather_facts: false
+  become: true
+
+  vars:
+    tautulli_docker_name: "tautulli"
+    tautulli_docker_volume_name: "tautulli"
+    tautulli_docker_network: "tautulli"
+
   tasks:
-  - name: Example assertion
-    ansible.builtin.assert:
-      that: true
+    - name: "Get info on volume"
+      community.docker.docker_volume_info:
+        name: "{{ tautulli_docker_volume_name }}"
+      register: "_volume_info_data"
+
+    - name: "Verify volume exists"
+      ansible.builtin.assert:
+        that: "_volume_info_data.exists"
+
+    - name: "Get info on default network"
+      community.docker.docker_network_info:
+        name: "{{ tautulli_docker_network }}"
+      register: "_network_info"
+
+    - name: "Verify default network exists"
+      ansible.builtin.assert:
+        that: "_network_info.exists"
+
+    - name: "Get info on container: {{ tautulli_docker_name }}"
+      community.docker.docker_container_info:
+        name: "{{ tautulli_docker_name }}"
+      register: "container_info"
+
+    - name: "Verify container exists and is running: {{ tautulli_docker_name }}"
+      ansible.builtin.assert:
+        that:
+          - "container_info.exists"
+          - "container_info.container['State']['Running']"

@@ -29,6 +29,12 @@ tautulli_docker_cpus: "1"
 # Amount of memory to allocate to the container.
 tautulli_docker_memory: "512M"
 
+# User ID for the file/directory owner.
+tautulli_docker_uid: 
+
+# Group ID for the file/directory owner.
+tautulli_docker_gid:
+
 #####
 # Docker networks
 #####
