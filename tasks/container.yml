@@ -3,7 +3,7 @@
   ansible.builtin.set_fact:
     _tautulli_docker_mount_list:
       - source: "{{ tautulli_docker_data_dir }}"
-        target: "/usr/src/app/store"
+        target: "/config"
         type: "bind"
   when: "not tautulli_docker_use_volumes"
 
@@ -11,7 +11,7 @@
   ansible.builtin.set_fact:
     _tautulli_docker_mount_list:
       - source: "{{ tautulli_docker_volume_name }}"
-        target: "/usr/src/app/store"
+        target: "/config"
         type: "volume"
   when: "tautulli_docker_use_volumes"
 
