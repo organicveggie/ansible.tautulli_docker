@@ -66,7 +66,7 @@
       value: "{{ tautulli_docker_web_port }}"
   when: "tautulli_docker_available_externally"
 
-- name: "Create Tautulli Docker container" # noqa: args[module]
+- name: "Create Tautulli Docker container"  # noqa: args[module]
   community.docker.docker_container:
     name: "{{ tautulli_docker_name }}"
     image: "{{ tautulli_docker_image_name }}:{{ tautulli_docker_image_version }}"

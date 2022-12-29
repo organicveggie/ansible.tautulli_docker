@@ -30,10 +30,10 @@ tautulli_docker_cpus: "1"
 tautulli_docker_memory: "512M"
 
 # User ID for the file/directory owner.
-tautulli_docker_uid: 
+tautulli_docker_uid: null
 
 # Group ID for the file/directory owner.
-tautulli_docker_gid:
+tautulli_docker_gid: null
 
 #####
 # Docker networks
