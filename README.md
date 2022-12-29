@@ -1,6 +1,6 @@
 # Ansible Role: Tautulli on Docker <!-- omit in toc -->
 
-[![github](https://github.com/organicveggie/ansible.tautulli_docker /workflows/Molecule/badge.svg)](https://github.com/organicveggie/ansible.tautulli_docker/actions)
+[![github](https://github.com/organicveggie/ansible.tautulli_docker/workflows/Lihnt/badge.svg)](https://github.com/organicveggie/ansible.tautulli_docker/actions)
 [![Issues](https://img.shields.io/github/issues/organicveggie/ansible.tautulli_docker.svg)](https://github.com/organicveggie/ansible.tautulli_docker/issues/)
 [![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/organicveggie/ansible.tautulli_docker.svg)](https://github.com/organicveggie/ansible.tautulli_docker/pulls/)
 [![Last commit](https://img.shields.io/github/last-commit/organicveggie/ansible.tautulli_docker?logo=github)](https://github.com/organicveggie/ansible.tautulli_docker/commits/main)
