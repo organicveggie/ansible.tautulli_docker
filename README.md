@@ -1,38 +1,43 @@
-Role Name
-=========
+# Ansible Role: Tautulli on Docker <!-- omit in toc -->
 
-A brief description of the role goes here.
+[![github](https://github.com/organicveggie/ansible.tautulli_docker /workflows/Molecule/badge.svg)](https://github.com/organicveggie/ansible.tautulli_docker/actions)
+[![Issues](https://img.shields.io/github/issues/organicveggie/ansible.tautulli_docker.svg)](https://github.com/organicveggie/ansible.tautulli_docker/issues/)
+[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/organicveggie/ansible.tautulli_docker.svg)](https://github.com/organicveggie/ansible.tautulli_docker/pulls/)
+[![Last commit](https://img.shields.io/github/last-commit/organicveggie/ansible.tautulli_docker?logo=github)](https://github.com/organicveggie/ansible.tautulli_docker/commits/main)
 
-Requirements
-------------
+An [Ansible](https://www.ansible.com/) role to setup and run the [Tautulli](https://tautulli.com/)
+[Docker](http://www.docker.com) [container](https://hub.docker.com/r/tautulli/tautulli).
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Contents <!-- omit in toc -->
 
-Role Variables
---------------
+- [Requirements](#requirements)
+- [Role Variables](#role-variables)
+- [Dependencies](#dependencies)
+- [Example Playbooks](#example-playbooks)
+- [License](#license)
+- [Author Information](#author-information)
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+## Requirements
 
-Dependencies
-------------
+Requires Docker. Reecommended role for Docker installation:
+[geerlingguy.docker](https://galaxy.ansible.com/geerlingguy/docker).
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Role Variables
 
-Example Playbook
-----------------
+See [defaults/main.yml](defaults/main.yml) for a complete list.
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Dependencies
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+None.
 
-License
--------
+## Example Playbooks
 
-BSD
+TODO
 
-Author Information
-------------------
+## License
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+[GNU AFFERO GPL](LICENSE)
+
+## Author Information
+
+[Sean Laurent](http://github/organicveggie)
