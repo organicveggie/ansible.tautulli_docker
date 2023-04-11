@@ -27,8 +27,12 @@ galaxy_info:
         - "jammy"
 
   galaxy_tags:
-    - "tautulli"
-    - "tautulli_docker"
     - "docker"
+    - "plex"
+    - "plexmedia"
+    - "plexmediaserver"
+    - "plexserver"
+    - "pms"
+    - "tautulli"
 
 dependencies: []
