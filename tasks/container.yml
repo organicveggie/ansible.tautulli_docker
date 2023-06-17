@@ -1,7 +1,7 @@
 ---
 - name: "Set Docker volume list for bind mounts"
   ansible.builtin.set_fact:
-    _tautulli_docker_mount_list:
+    _fact_tautulli_docker_mount_list:
       - source: "{{ tautulli_docker_data_dir }}"
         target: "/config"
         type: "bind"
@@ -9,7 +9,7 @@
 
 - name: "Set Docker mount list for volume mounts"
   ansible.builtin.set_fact:
-    _tautulli_docker_mount_list:
+    _fact_tautulli_docker_mount_list:
       - source: "{{ tautulli_docker_volume_name }}"
         target: "/config"
         type: "volume"
@@ -17,7 +17,7 @@
 
 - name: "Convert created network into array of dictionary"
   ansible.builtin.set_fact:
-    _tautulli_docker_created_networks:
+    _fact_tautulli_docker_created_networks:
       - name: "{{ tautulli_docker_network }}"
         ipv4_address: "{{ _tautulli_docker_network_ipv4 | default(omit) }}"
         ipv6_address: "{{ _tautulli_docker_network_ipv6 | default(omit) }}"
@@ -26,21 +26,21 @@
 
 - name: "Create placeholder array for created network"
   ansible.builtin.set_fact:
-    _tautulli_docker_created_networks: []
+    _fact_tautulli_docker_created_networks: []
   when: "not tautulli_docker_network_create"
 
 - name: "Define all Docker networks for this container"
   ansible.builtin.set_fact:
-    _tautulli_docker_all_networks: >
-      {{ _tautulli_docker_created_networks + tautulli_docker_extra_networks }}
+    _fact_tautulli_docker_all_networks: >
+      {{ _fact_tautulli_docker_created_networks + tautulli_docker_extra_networks }}
 
 - name: "Build container FQDN"
   ansible.builtin.set_fact:
-    _tautulli_docker_fqdn: "{{ tautulli_docker_hostname }}.{{ tautulli_docker_host_domain }}"
+    _fact_tautulli_docker_fqdn: "{{ tautulli_docker_hostname }}.{{ tautulli_docker_host_domain }}"
 
 - name: "Define Docker labels with Traefik disabled"
   ansible.builtin.set_fact:
-    tautulli_docker_labels: "{{ tautulli_docker_labels | default({}) |
+    _fact_tautulli_docker_labels: "{{ _fact_tautulli_docker_labels | default({}) |
       combine({item.key: item.value}) }}"
   with_items:
     - key: "traefik.enable"
@@ -49,13 +49,13 @@
 
 - name: "Define Docker labels with Traefik enabled"
   ansible.builtin.set_fact:
-    tautulli_docker_labels: "{{ tautulli_docker_labels | default({}) |
+    _fact_tautulli_docker_labels: "{{ _fact_tautulli_docker_labels | default({}) |
       combine({item.key: item.value}) }}"
   with_items:
     - key: "traefik.enable"
       value: "{{ tautulli_docker_available_externally }}"
     - key: "traefik.http.routers.tautulli.rule"
-      value: "Host(`{{ _tautulli_docker_fqdn }}`)"
+      value: "Host(`{{ _fact_tautulli_docker_fqdn }}`)"
     - key: "traefik.http.routers.tautulli.entrypoints"
       value: "http,https"
     - key: "traefik.http.routers.tautulli.tls.certresolver"
@@ -71,13 +71,13 @@
     name: "{{ tautulli_docker_name }}"
     image: "{{ tautulli_docker_image_name }}:{{ tautulli_docker_image_version }}"
     pull: true
-    mounts: "{{ _tautulli_docker_mount_list }}"
+    mounts: "{{ _fact_tautulli_docker_mount_list }}"
     env:
       "PGID": "{{ tautulli_docker_gid | default(omit) }}"
       "PUID": "{{ tautulli_docker_uid | default(omit) }}"
       "TZ": "{{ tautulli_docker_timezone }}"
     network_mode: "{{ tautulli_docker_network }}"
-    networks: "{{ _tautulli_docker_all_networks }}"
+    networks: "{{ _fact_tautulli_docker_all_networks }}"
     restart_policy: unless-stopped
     memory: "{{ tautulli_docker_memory }}"
     cpus: "{{ tautulli_docker_cpus }}"
@@ -90,4 +90,4 @@
     privileged: false
     read_only: false
     tty: false
-    labels: "{{ tautulli_docker_labels }}"
+    labels: "{{ _fact_tautulli_docker_labels }}"
