@@ -59,34 +59,6 @@ tautulli_docker_network_ipv4: null
 # IPv6 is enabled in the default network.
 tautulli_docker_network_ipv6: null
 
-# Create the default Docker network. True creates network and attaches the container to it. False
-# does not create the network.
-tautulli_docker_network_create: false
-
-# Driver to use for the default Docker network for the container. Only used when
-# [tautulli_docker_network_create] is enabled. See
-# https://docs.docker.com/network/#network-drivers for available options.
-tautulli_docker_network_driver: "bridge"
-
-# Enable IPv6 in the default Docker network for the container. Only used when
-# [tautulli_docker_network_create] is enabled.
-tautulli_docker_network_enable_ipv6: "false"
-
-# Restrict external access to the default network. See
-# https://docs.docker.com/engine/reference/commandline/network_create/#network-internal-mode.
-# Only used when [tautulli_docker_network_create] is enabled.
-tautulli_docker_network_internal: "yes"
-
-# Control the default network's scope. Only used when [tautulli_docker_network_create] is enabled.
-tautulli_docker_network_scope: "local"
-
-# IPv4 subnet for the default network. Only used when [tautulli_docker_network_create] is enabled.
-tautulli_docker_network_subnet: "172.1.1.0/24"
-
-# IPv4 gateway for the default network. Only used when [tautulli_docker_network_create] is
-# enabled.
-tautulli_docker_network_gateway: "172.1.1.1"
-
 #####
 # Docker volumes and folders
 #####
@@ -117,3 +89,6 @@ tautulli_docker_hostname: "tautulli"
 # Domain name to use for the Traefik endpoint. Combined with [tautulli_docker_hostname] to form
 # the FQDN for the endpoint. Also used by Traefik to create the necessary Let's Encrypt certificate.
 tautulli_docker_host_domain: "example.com"
+
+# List of additional domain names to use for the Traefik endpoint.
+tautulli_docker_extra_fqdns: []

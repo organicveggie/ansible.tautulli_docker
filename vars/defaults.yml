@@ -1,0 +1,4 @@
+---
+# Set of container labels to use when Traefik is disabled.
+tautulli_docker_labels_traefik_disabled:
+  traefik.enable: "false"
